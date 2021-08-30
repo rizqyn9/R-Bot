@@ -2,6 +2,7 @@ import {Client, Message} from '@open-wa/wa-automate'
 import {typeConfigBot, ConfigBot, redisClient} from '../config'
 import {enumCommand, IPrefix, Logger} from "../utils";
 import {typeUserSchema, typeUserInGroup, typeGroupSchema, Groups, Users} from "../databases/model";
+import fs from 'fs'
 
 /**
  * - Validate prefix
@@ -23,7 +24,7 @@ export const messageRouter = async (Rbot : Client, msg : Message) => {
         //@ts-ignore
         if(["daftar", "regis", "join"].includes(prefix.cmd1)){
             if(msg.isGroupMsg){
-                let isExisting = await Groups.findOne({groupID:msg.chatId})
+                let isExisting = await Groups.findOne({idNumber:msg.chatId})
                 if(isExisting){
                     Logger.bot("Group existing")
                     return Rbot.sendText(msg.chatId, "This group already registered")
@@ -86,6 +87,13 @@ export const messageRouter = async (Rbot : Client, msg : Message) => {
             })
         if(!dataAuthorized) return Rbot.sendText(msg.chatId, `${msg.isGroupMsg ? "Group" : "Kamu"} belum terdaftar`)
 
+        if(prefix.prefix == "#"){
+            if("kontol") {
+                let img = await fs.readFileSync("./public/unknown.png", {encoding : "base64"})
+                // @ts-ignore
+                return Rbot.sendImage(msg.chatId, `data:image/png;base64,${img.toString("base64")}`, "", "Nih,,,", msg.id)
+            }
+        }
     } catch (e) {
         Logger.error(`messageRouter ${e}`)
     }
