@@ -12,7 +12,8 @@ export enum enumCommand {
     EMPTY = "",
     CSTM="[CSTM]",
     RDIS="[REDIS]",
-    MNGO="[MONGODB]"
+    MNGO="[MONGODB]",
+    REG= "[REG]"
 }
 
 interface IMessageLogger {

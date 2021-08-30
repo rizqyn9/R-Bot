@@ -5,7 +5,7 @@ export type typeUserSchema = {
     name : string,
     address : string,
     isPremium : boolean,
-    groupList : Array<any>,
+    groupList? : Array<any>,
 }
 
 const UserSchema : Schema = new Schema({

@@ -1,29 +1,33 @@
 import {enumCommand, IPrefix, Logger} from '../utils'
 import {ConfigBot} from "../config";
-import {authorize, test, redisTest} from "./authorize.test";
+import {redisTest} from "./authorize.test";
+import {validPrefix} from "../message/routing";
+
 
 
 const MainTest = async () => {
-    console.log("test")
-    await redisTest("34324jhbj")
-    console.log("test")
+    let target : string = "    #haha sada sad"
+    await validPrefix(target)
+
 }
 
 MainTest()
+
+
 
 
 // region Validate Prefix
 const reqTest2 = " !hahah#  !asdsad asdsa"
 
 const proceTest2 = (req :string) => {
-    return validPrefix(reqTest2)
+    return avalidPrefix(reqTest2)
 }
 /**
  * Just clearance whitespace, get prefix and set to prefix Interface
  * @param target
  * @param validate
  */
-const validPrefix = (target : string, validate :Array<string> = ConfigBot.prefixAllowed) : IPrefix=> {
+const avalidPrefix = (target : string, validate :Array<string> = ConfigBot.prefixAllowed) : IPrefix=> {
     let res : IPrefix = {prefix : null}
     target = target.trim()
     for (let i = 0; i < validate.length; i++ ){

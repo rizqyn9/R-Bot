@@ -43,7 +43,8 @@ const Start = async (RBot :Client) => {
 
 
     RBot.onMessage((msg)=>{
-        Logger.bot("new msg")
+        // Logger.bot("new msg")
+        // console.log(msg)
         messageRouter(RBot, msg);
     })
 }
