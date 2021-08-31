@@ -54,6 +54,7 @@ export const messageRouter = async (Rbot : Client, msg : Message) => {
                     Logger.error("User Regist request not authorized", enumCommand.REG)
                     return Rbot.sendText(msg.chatId,`Format salah`)
                 }
+
                 console.log(resIsValid)
                 return await new Users({
                     idNumber : msg.chatId,
@@ -76,7 +77,7 @@ export const messageRouter = async (Rbot : Client, msg : Message) => {
          * user authorize in Mongo will set redis key to caching in next request
          * user non authorize will return msg to regist their own
          */
-        console.log(msg.chatId)
+        // console.log(msg.chatId)
         let dataAuthorized = await authorizing(msg.chatId, msg.isGroupMsg)
             .then(res => {
                 console.log(res)
@@ -88,10 +89,18 @@ export const messageRouter = async (Rbot : Client, msg : Message) => {
         if(!dataAuthorized) return Rbot.sendText(msg.chatId, `${msg.isGroupMsg ? "Group" : "Kamu"} belum terdaftar`)
 
         if(prefix.prefix == "#"){
-            if("kontol") {
-                let img = await fs.readFileSync("./public/unknown.png", {encoding : "base64"})
-                // @ts-ignore
-                return Rbot.sendImage(msg.chatId, `data:image/png;base64,${img.toString("base64")}`, "", "Nih,,,", msg.id)
+            if(!prefix.cmd1) return
+
+            if(["gay", "kontol", "memek", "anjing"].includes(prefix.cmd1)){
+                let img = await fs.readFileSync(`./public/${prefix.cmd1}.png`, {encoding : "base64"})
+                console.log(img)
+                return Rbot.sendImage(msg.chatId, `data:image/png;base64,${img.toString()}`, "", "Nih,,,", msg.id)
+            }
+
+            if("surya" == prefix.cmd1){
+                let vid = await fs.readFileSync('public/surya.mp4', {encoding : "base64"})
+                // console.log(vid)
+                return Rbot.sendFile(msg.chatId, `data:video/mp4;base64,${vid}`, "surya.mp4", "Gak surya gak asek")
             }
         }
     } catch (e) {

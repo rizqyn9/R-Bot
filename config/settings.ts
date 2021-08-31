@@ -17,6 +17,7 @@ const initConfiguration = (headles = false, start:any):ConfigObject => {
         restartOnCrash: start,
         cacheEnabled: false,
         useChrome: false,
+        executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
         // logConsoleErrors:true,
         // logConsole:true,
         killProcessOnBrowserClose: true,

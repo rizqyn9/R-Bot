@@ -13,6 +13,8 @@ client.on("ready", () => {
 })
 client.on("error", () => {
     Logger.error("Redis Database error", enumCommand.RDIS)
+    Logger.error("Turn off system", enumCommand.RDIS)
+    process.exit()
 })
 client.on("reconnecting", () => {
     Logger.warn("Redis on Reconnecting", enumCommand.RDIS)

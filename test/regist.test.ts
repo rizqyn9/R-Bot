@@ -14,7 +14,7 @@ const regisTest = (msg : Message) => {
     if(msg.isGroupMsg){
         console.log("group")
         let data: typeGroupSchema = {
-            groupID         : msg.chatId,
+            idNumber         : msg.chatId,
             owner           : msg.chat.groupMetadata.owner.toString(),
             groupName       : msg.chat.name,
             isPremium       : false,
