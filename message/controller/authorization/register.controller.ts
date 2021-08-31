@@ -2,7 +2,7 @@ import {Client, Message} from "@open-wa/wa-automate";
 import {IPrefix} from "../../../utils/interface";
 import {Groups, typeGroupSchema, Users} from "../../../databases/model";
 import {enumCommand, Logger} from "../../../utils/logger";
-import {validateFormUserRegist} from "../../routing";
+import {validateFormUserRegist} from "./validateForm.controller";
 
 export async function RegistController(Rbot: Client, msg: Message,  prefix: IPrefix) {
     if (msg.isGroupMsg) {

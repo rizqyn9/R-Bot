@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build" : "tsc",
+    "start": "node ./dist/index.js",
     "test": "nodemon --watch './**/*.ts' --exec 'ts-node' test/index.ts",
     "test2": "nodemon --watch './**/*.ts' --exec 'ts-node' ",
     "dev": "nodemon --watch './**/*.ts' --exec 'ts-node' index.ts"

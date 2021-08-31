@@ -6,7 +6,7 @@ import {
     typeUserSchema
 } from '../databases/model'
 import {IPrefix} from "../utils/interface";
-import {validateFormUserRegist} from "../message/routing";
+import {validateFormUserRegist} from "../message/controller/authorization/validateForm.controller";
 
 
 const regisTest = (msg : Message) => {
