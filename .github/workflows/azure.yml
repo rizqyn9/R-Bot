@@ -23,7 +23,7 @@ on:
 env:
   AZURE_WEBAPP_NAME: R-Bot   # set this to your application's name
   AZURE_WEBAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
-  NODE_VERSION: 'v16.5.0"              # set this to the node version to use
+  NODE_VERSION: "v16.5.0"              # set this to the node version to use
 
 jobs:
   build-and-deploy:
@@ -36,11 +36,9 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: ${{ env.NODE_VERSION }}
-    - name: npm install, run dev
+    - name: npm install run dev
       run: |
         npm install
-        npm run build --if-present
-        npm run test --if-present
     - name: 'Deploy to Azure WebApp'
       uses: azure/webapps-deploy@v2
       with:
